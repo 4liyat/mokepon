@@ -16,8 +16,27 @@ function seleccionarMascotaJugador(){
     } else if (inputRatigueya.checked){
         spanMascotaJugador.innerHTML = "Ratigueya";
     } else {
-        alert("Selecciona una mascota!")
+        alert("Selecciona una mascota!");
     }
+
+    seleccionarMascotaEnemigo()
+}
+
+function seleccionarMascotaEnemigo(){
+    let mokeponAleatorio = aleatorio(1,3);
+    let spanMascotaEnemigo = document.getElementById("mascota-enemigo");
+
+    if (mokeponAleatorio == 1){
+        spanMascotaEnemigo.innerHTML = "Hipodoge";
+    } else if (mokeponAleatorio == 2){
+        spanMascotaEnemigo.innerHTML = "Capipepo";
+    } else {
+        spanMascotaEnemigo.innerHTML = "Ratigueya";
+    }
+}
+
+function aleatorio(min,max){
+    return Math.floor(Math.random()*(max-min+1)+min);
 }
 
 window.addEventListener("load", iniciarJuego);
