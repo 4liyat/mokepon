@@ -1,5 +1,7 @@
 let ataqueJugador;
 let ataqueEnemigo;
+let vidasJugador = 3;
+let vidasEnemigo = 3;
 
 function iniciarJuego(){
     let botonMascotaJugador = document.getElementById("boton-mascota");
@@ -73,20 +75,37 @@ function ataqueAleatorioEnemigo(){
 }
 
 function combate(){
-    if(ataqueEnemigo == ataqueJugador){
+    let spanVidasJugador = document.getElementById("vidas-jugador");
+    let spanVidasEnemigo = document.getElementById("vidas-Enemigo");
+
+    if (ataqueEnemigo == ataqueJugador){
         crearMensaje("!Empate! 🟰");
-    }
-    else if(ataqueJugador == "Fuego🔥" && ataqueEnemigo == "Tierra🌱"){
+    } else if (ataqueJugador == "Fuego🔥" && ataqueEnemigo == "Tierra🌱"){
         crearMensaje("!Ganaste! 🎉");
-    }
-    else if(ataqueJugador == "Agua🌊" && ataqueEnemigo == "Fuego🔥"){
+        vidasEnemigo--;
+        spanVidasEnemigo.innerHTML = vidasEnemigo;
+    } else if (ataqueJugador == "Agua🌊" && ataqueEnemigo == "Fuego🔥"){
         crearMensaje("!Ganaste! 🎉");
-    }
-    else if(ataqueJugador == "Tierra🌱" && ataqueEnemigo == "Agua🌊"){
+        vidasEnemigo--;
+        spanVidasEnemigo.innerHTML = vidasEnemigo;
+    } else if (ataqueJugador == "Tierra🌱" && ataqueEnemigo == "Agua🌊"){
         crearMensaje("!Ganaste! 🎉");
-    }
-    else{
+        vidasEnemigo--;
+        spanVidasEnemigo.innerHTML = vidasEnemigo;
+    } else {
         crearMensaje("Perdiste! 🦜");
+        vidasJugador--;
+        spanVidasJugador.innerHTML = vidasJugador;
+    }
+
+    revisarVidas();
+}
+
+function revisarVidas(){
+    if (vidasEnemigo == 0){
+        crearMensajeFinal("🎉 Felicidades, has ganado el combate! 🎉");
+    } else if (vidasJugador == 0){
+        crearMensajeFinal("😢 Perdiste sigue participando, buen intento!");
     }
 }
 
@@ -95,6 +114,15 @@ function crearMensaje(resultado){
     let parrafo = document.createElement("p");
 
     parrafo.innerHTML = "Tu mascota ataco con " + ataqueJugador + "<br>la mascota enemiga ataco con " + ataqueEnemigo + "<br>" + resultado;
+
+    sectionMensajes.appendChild(parrafo);
+}
+
+function crearMensajeFinal(resultadoFinal){
+    let sectionMensajes = document.getElementById("mensajes");
+    let parrafo = document.createElement("p");
+
+    parrafo.innerHTML = resultadoFinal;
 
     sectionMensajes.appendChild(parrafo);
 }
