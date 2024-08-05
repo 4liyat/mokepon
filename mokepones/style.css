@@ -4,3 +4,21 @@
     height: 60px;
     background-color: blanchedalmond;
 }
+#seleccionar-mascota {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.tarjetas-de-mokepon {
+    width: 100px;
+    height: 100px;
+    background: aquamarine;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    border: 1px solid rebeccapurple;
+}
+input {
+    display: none;
+}
