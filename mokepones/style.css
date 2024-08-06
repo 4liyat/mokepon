@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Grey+Qo&display=swap');
 
 body {
     font-family: "Fredoka", sans-serif;
@@ -12,28 +12,44 @@ body {
 }
 .titulo {
     color: whitesmoke;
-    font-size: 36px;
+    font-size: 40px;
 }
 .subtitulo {
     color: whitesmoke;
-    font-size: 20px;
+    font-size: 24px;
 }
 .tarjetas {
     display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+    gap: 12px;
+    margin-bottom: 12px;
 }
 .tarjetas-de-mokepon {
     color: whitesmoke;
-    font-size: 10px;
+    font-size: 12px;
     background: #03346E;
-    padding: 20px;
+    padding: 8px 20px;
     box-sizing: border-box;
     border-radius: 20px;
 }
+.tarjetas-de-mokepon:hover {
+    border: 2px dashed yellowgreen;
+}
 .tarjetas-de-mokepon img {
-    width: 50px;
+    width: 100px;
 }
 input {
     display: none;
+}
+#boton-mascota {
+    font-family: "Grey Qo", cursive;
+    font-size: 32px;
+    margin: 20px;
+    width: 140px;
+    height: 60px;
+    border-radius: 24px;
+    background: transparent;
+    color: aquamarine;
+}
+#boton-mascota:hover {
+    background-color: rgba(255, 228, 196, 0.459);
 }
