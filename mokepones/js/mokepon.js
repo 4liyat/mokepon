@@ -25,7 +25,7 @@ function iniciarJuego(){
 
 function seleccionarMascotaJugador(){
     let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
-    sectionSeleccionarAtaque.style.display = "block";
+    sectionSeleccionarAtaque.style.display = "flex";
     let sectionSeleccionarMascota = document.getElementById("seleccionar-mascota");
     sectionSeleccionarMascota.style.display = "none";
 
@@ -116,31 +116,34 @@ function combate(){
 
 function revisarVidas(){
     if (vidasEnemigo == 0){
-        crearMensajeFinal("🎉 Felicidades, has ganado el combate! 🎉");
+        crearMensajeFinal("🎉 Felicidades, Has ganado el duelo! 🎉");
     } else if (vidasJugador == 0){
-        crearMensajeFinal("😢 Perdiste, sigue participando, buen intento!");
+        crearMensajeFinal("😢 Perdiste, Sigue participando!");
     }
 }
 
 function crearMensaje(resultado){
-    let sectionMensajes = document.getElementById("mensajes");
-    let parrafo = document.createElement("p");
+    let sectionMensajes = document.getElementById("resultado");
+    let ataquesJugador = document.getElementById("ataques-jugador");
+    let ataquesEnemigo = document.getElementById("ataques-enemigo");
+    
+    let nuevoAtaqueJugador = document.createElement("p");
+    let nuevoAtaqueEnemigo = document.createElement("p");
 
-    parrafo.innerHTML = "Tu mascota ataco con " + ataqueJugador + "<br>la mascota enemiga ataco con " + ataqueEnemigo + "<br>" + resultado;
+    sectionMensajes.innerHTML = resultado;
+    nuevoAtaqueJugador.innerHTML = ataqueJugador;
+    nuevoAtaqueEnemigo.innerHTML = ataqueEnemigo;
 
-    sectionMensajes.appendChild(parrafo);
+    ataquesJugador.appendChild(nuevoAtaqueJugador);
+    ataquesEnemigo.appendChild(nuevoAtaqueEnemigo);
 }
 
 function crearMensajeFinal(resultadoFinal){
     let sectionReiniciar = document.getElementById("reiniciar");
     sectionReiniciar.style.display = "block";
 
-    let sectionMensajes = document.getElementById("mensajes");
-    let parrafo = document.createElement("p");
-
-    parrafo.innerHTML = resultadoFinal;
-
-    sectionMensajes.appendChild(parrafo);
+    let sectionMensajes = document.getElementById("resultado");
+    sectionMensajes.innerHTML = resultadoFinal;
 
     let botonFuego = document.getElementById("boton-fuego");
     botonFuego.disabled = true;

@@ -49,23 +49,25 @@
         <h2 class="subtitulo">Selecciona tu ataque: </h2>
         <!-- 💦>🔥>🌱 -->
         <div>
-            <button id="boton-fuego">Fuego!🔥</button>
-            <button id="boton-agua">Agua!💦</button>
-            <button id="boton-tierra">Tierra!🌱</button>
+            <button class="boton-ataque" id="boton-fuego">Fuego!🔥</button>
+            <button class="boton-ataque" id="boton-agua">Agua!💦</button>
+            <button class="boton-ataque" id="boton-tierra">Tierra!🌱</button>
         </div>
 
-        <div>
-            <section id="mensajes">
-            </section>
-        
-            <section id="reiniciar">
+        <section id="mensajes">
+            <p id="resultado">Que comience el combate!</p>
+
+            <div id="reiniciar">
                 <button id="boton-reiniciar">reiniciar</button>
-            </section>
-        </div>
+            </div>
+        </section>
 
         <div>
             <p>Tu mascota <span id="mascota-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p>
             <p>La mascota <span id="mascota-enemigo"></span> del enemigo tiene <span id="vidas-enemigo">3</span> vidas</p>   
+
+            <div id="ataques-jugador"></div>
+            <div id="ataques-enemigo"></div>
         </div>
     </section>
 </body>
