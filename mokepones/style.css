@@ -88,14 +88,41 @@ input {
 #boton-reiniciar {
     font-size: 12px;
     background: #F5EDED;
-    padding: 8px 20px;
+    padding: 12px 20px;
     box-sizing: border-box;
     border-radius: 16px;
     border-color: transparent;
-    margin: 2px 10px;
-    width: 120px;
-    height: 60pxpx;
+    margin: 4px 10px;
+    width: 140px;
+    height: 50px;
+    font-size: 16px;
 }
 #boton-reiniciar:hover {
     border: 2px dashed #6482AD
+}
+
+#tarjetas-contrincantes {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    column-gap: 40px;
+}
+.tarjeta-contrincante {
+    place-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #7FA1C3;
+    border-radius: 40px;
+    border: 1px solid #F5EDED;
+    padding: 10px;
+}
+.contrincante {
+    font-size: 10px;
+}
+.vidas-contrincantes {
+    font-size: 40px;
+    margin: 1px;
+}
+.ataques-realizados {
+    border-top: 1px solid;
 }

@@ -62,12 +62,20 @@
             </div>
         </section>
 
-        <div>
-            <p>Tu mascota <span id="mascota-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p>
-            <p>La mascota <span id="mascota-enemigo"></span> del enemigo tiene <span id="vidas-enemigo">3</span> vidas</p>   
-
-            <div id="ataques-jugador"></div>
-            <div id="ataques-enemigo"></div>
+        <div id="tarjetas-contrincantes">
+            <div class="tarjeta-contrincante">
+                <p class="contrincante">Vidas del jugador</p>
+                <p class="vidas-contrincantes" id="vidas-jugador">3</p>
+                <p id="mascota-jugador"></p>
+                <div class="ataques-realizados" id="ataques-jugador"></div>
+            </div>
+            
+            <div class="tarjeta-contrincante">
+                <p class="contrincante">Vidas del enemigo</p>
+                <p class="vidas-contrincantes" id="vidas-enemigo">3</p>
+                <p id="mascota-enemigo"></p>
+                <div class="ataques-realizados" id="ataques-enemigo"></div>
+            </div>
         </div>
     </section>
 </body>
