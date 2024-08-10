@@ -14,11 +14,13 @@ body {
 .titulo {
     color: #F5EDED;
     font-size: 40px;
-    margin: 10px;
+    text-align: center;
+    margin: 5px;
 }
 .subtitulo {
     color: #F5EDED;
     font-size: 24px;
+    margin: 5px;
 }
 .tarjetas {
     display: flex;
@@ -103,8 +105,9 @@ input {
 
 #tarjetas-contrincantes {
     display: grid;
-    grid-template-columns: 200px 200px;
-    column-gap: 40px;
+    justify-content: center;
+    grid-template-columns: 150px 150px;
+    column-gap: 20px;
 }
 .tarjeta-contrincante {
     place-self: stretch;
@@ -112,7 +115,7 @@ input {
     flex-direction: column;
     align-items: center;
     background: #7FA1C3;
-    border-radius: 40px;
+    border-radius: 30px;
     border: 1px solid #F5EDED;
     padding: 10px;
 }
@@ -125,4 +128,33 @@ input {
 }
 .ataques-realizados {
     border-top: 1px solid;
+}
+
+@media (max-width: 360px){
+    .tarjetas {
+        flex-direction: column;
+    }
+    .tarjetas-de-mokepon {
+        display: flex;
+        padding: 10px;
+        font-size: 10px;
+        gap: 5px;
+    }
+    .tarjetas-de-mokepon img {
+        width: 80px;
+    }
+    #botones-ataque {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    #mensajes {
+        padding: 5px 10px;
+        margin: 10px;
+    }
+    #tarjetas-contrincantes {
+        grid-template-columns: 40% 40%;
+        width: 90%;
+        column-gap: 8%;
+    }
 }
