@@ -44,6 +44,9 @@ body {
 input {
     display: none;
 }
+input:checked + label {
+    background-color: #86AB89;
+}
 #boton-mascota {
     font-family: "Grey Qo", cursive;
     font-size: 32px;
