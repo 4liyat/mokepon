@@ -75,7 +75,7 @@ input:checked + label {
     border-color: transparent;
     margin: 2px 10px;
     width: 120px;
-    height: 48pxpx;
+    height: 48px;
 }
 .boton-ataque:hover {
     border: 2px dashed #F5EDED;
