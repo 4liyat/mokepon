@@ -29,7 +29,7 @@ body {
 }
 .tarjetas-de-mokepon {
     color: #F5EDED;
-    font-size: 12px;
+    font-size: 16px;
     background: #7FA1C3;
     padding: 8px 20px;
     box-sizing: border-box;
@@ -67,7 +67,7 @@ input:checked + label {
 }
 .boton-ataque {
     color: #F5EDED;
-    font-size: 12px;
+    font-size: 16px;
     background: #7FA1C3;
     padding: 8px 20px;
     box-sizing: border-box;
@@ -125,7 +125,7 @@ input:checked + label {
 .contrincante {
     font-size: 10px;
 }
-.vidas-contrincantes {
+.victorias-contrincantes {
     font-size: 40px;
     margin: 1px;
 }
