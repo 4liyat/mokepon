@@ -43,6 +43,7 @@ class Mokepon {
 let hipodoge = new Mokepon("Hipodoge", "./assets/mokepons_mokepon_hipodoge_attack.png", 5)
 let capipepo = new Mokepon("Capipepo", "./assets/mokepons_mokepon_capipepo_attack.png", 5)
 let ratigueya = new Mokepon("Ratigueya", "./assets/mokepons_mokepon_ratigueya_attack.png", 5)
+let furulillo = new Mokepon("Furulillo", "./assets/mokepons_mokepon_furulillo_attack.png", 5)
 
 hipodoge.ataques.push(
     {nombre: "Agua🌊", id: "boton-agua"},
@@ -65,8 +66,15 @@ ratigueya.ataques.push(
     {nombre: "Agua🌊", id: "boton-agua"},
     {nombre: "Tierra🌱", id: "boton-tierra"},
 )
+furulillo.ataques.push(
+    {nombre: "Fuego🔥", id: "boton-fuego"},
+    {nombre: "Fuego🔥", id: "boton-fuego"},
+    {nombre: "Fuego🔥", id: "boton-fuego"},
+    {nombre: "Agua🌊", id: "boton-agua"},
+    {nombre: "Tierra🌱", id: "boton-tierra"},
+)
 
-mokepones.push(hipodoge, capipepo, ratigueya)
+mokepones.push(hipodoge, capipepo, ratigueya, furulillo)
 
 function iniciarJuego(){
     sectionSeleccionarAtaque.style.display = "none"
