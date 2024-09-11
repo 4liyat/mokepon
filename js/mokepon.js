@@ -12,12 +12,11 @@ const ataquesJugador = document.getElementById("ataques-jugador")
 const ataquesEnemigo = document.getElementById("ataques-enemigo")
 const contenedorTarjetas = document.getElementById("contenedor-tarjetas")
 const contenedorAtaques = document.getElementById("botones-ataque")
+const sectionVerMapa = document.getElementById("ver-mapa")
+const mapa = document.getElementById("mapa")
 
 let opcionDeMokepones
 let opcionDeAtaques
-let inputHipodoge
-let inputCapipepo
-let inputRatigueya
 let mokepones = []
 let botones = []
 let ataqueJugador = []
@@ -30,6 +29,11 @@ let indexAtaqueEnemigo
 let mascotaJugador
 let victoriasJugador = 0
 let victoriasEnemigo = 0
+let lienzo = mapa.getContext("2d")
+/* Aqui se modifica todo para agregar los mokepones */
+let inputHipodoge
+let inputCapipepo
+let inputRatigueya
 
 class Mokepon {
     constructor(nombre, foto, vida){
@@ -67,9 +71,10 @@ ratigueya.ataques.push(
 )
 
 mokepones.push(hipodoge, capipepo, ratigueya)
-
+/* Aqui termina la seccion para agregar mokepones. */
 function iniciarJuego(){
     sectionSeleccionarAtaque.style.display = "none"
+    sectionVerMapa.style.display = "none"
 
     mokepones.forEach((mokepon) => {
         opcionDeMokepones = `
@@ -105,10 +110,15 @@ function seleccionarMascotaJugador(){
     }
 
     if(mascotaJugador){
-    sectionSeleccionarAtaque.style.display = "flex"
+    sectionVerMapa.style.display = "flex"
+    // sectionSeleccionarAtaque.style.display = "flex"
     sectionSeleccionarMascota.style.display = "none"
     extraerAtaques(mascotaJugador)
     seleccionarMascotaEnemigo()
+
+    let imagenMokepon = new Image()
+    imagenMokepon.src = hipodoge.foto
+    lienzo.drawImage(imagenMokepon, 20, 40, 100, 100)
     }
 }
 
