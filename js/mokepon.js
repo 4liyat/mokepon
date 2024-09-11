@@ -15,12 +15,9 @@ const contenedorAtaques = document.getElementById("botones-ataque")
 
 let opcionDeMokepones
 let opcionDeAtaques
-
 let inputHipodoge
 let inputCapipepo
 let inputRatigueya
-let inputFurulillo
-
 let mokepones = []
 let botones = []
 let ataqueJugador = []
@@ -96,7 +93,6 @@ function iniciarJuego(){
     inputHipodoge = document.getElementById("Hipodoge")
     inputCapipepo = document.getElementById("Capipepo")
     inputRatigueya = document.getElementById("Ratigueya")
-    inputFurulillo = document.getElementById("Furulillo")
 
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador)
     botonReiniciar.addEventListener("click", reiniciarJuego)
@@ -112,9 +108,6 @@ function seleccionarMascotaJugador(){
     } else if (inputRatigueya.checked){
         spanMascotaJugador.innerHTML = inputRatigueya.id
         mascotaJugador = inputRatigueya.id
-    } else if (inputFurulillo.checked){
-        spanMascotaJugador.innerHTML = inputFurulillo.id
-        mascotaJugador = inputFurulillo.id
     } else {
         alert("Selecciona una mascota!")
     }
