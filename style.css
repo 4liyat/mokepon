@@ -132,14 +132,6 @@ input:checked + label {
 .ataques-realizados {
     border-top: 1px solid;
 }
-#ver-mapa {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-#mapa {
-    border: 2px solid white;
-}
 
 @media (max-width: 360px){
     .tarjetas {
