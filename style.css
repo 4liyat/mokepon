@@ -140,6 +140,9 @@ input:checked + label {
 #mapa {
     border: 2px solid white;
 }
+#selector-movimiento {
+    display: flex;
+}
 
 @media (max-width: 360px){
     .tarjetas {

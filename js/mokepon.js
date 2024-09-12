@@ -30,6 +30,7 @@ let mascotaJugador
 let victoriasJugador = 0
 let victoriasEnemigo = 0
 let lienzo = mapa.getContext("2d")
+let intervalo
 /* Aqui se modifica todo para agregar los mokepones */
 let inputHipodoge
 let inputCapipepo
@@ -41,28 +42,36 @@ class Mokepon {
         this.foto = foto
         this.vida = vida
         this.ataques = []
+        this.x = 20
+        this.y = 30
+        this.ancho = 80
+        this.alto = 80
+        this.mapaFoto = new Image()
+        this.mapaFoto.src = foto
+        this.velocidadX = 0
+        this.velocidadY = 0
     }
 }
 
-let hipodoge = new Mokepon("Hipodoge", "./assets/mokepons_mokepon_hipodoge_attack.png", 5)
-let capipepo = new Mokepon("Capipepo", "./assets/mokepons_mokepon_capipepo_attack.png", 5)
-let ratigueya = new Mokepon("Ratigueya", "./assets/mokepons_mokepon_ratigueya_attack.png", 5)
+let Hipodoge = new Mokepon("Hipodoge", "./assets/mokepons_mokepon_Hipodoge_attack.png", 5)
+let Capipepo = new Mokepon("Capipepo", "./assets/mokepons_mokepon_Capipepo_attack.png", 5)
+let Ratigueya = new Mokepon("Ratigueya", "./assets/mokepons_mokepon_Ratigueya_attack.png", 5)
 
-hipodoge.ataques.push(
+Hipodoge.ataques.push(
     {nombre: "Agua🌊", id: "boton-agua"},
     {nombre: "Agua🌊", id: "boton-agua"},
     {nombre: "Agua🌊", id: "boton-agua"},
     {nombre: "Tierra🌱", id: "boton-tierra"},
     {nombre: "Fuego🔥", id: "boton-fuego"},
 )
-capipepo.ataques.push(
+Capipepo.ataques.push(
     {nombre: "Tierra🌱", id: "boton-tierra"},
     {nombre: "Tierra🌱", id: "boton-tierra"},
     {nombre: "Tierra🌱", id: "boton-tierra"},
     {nombre: "Agua🌊", id: "boton-agua"},
     {nombre: "Fuego🔥", id: "boton-fuego"},
 )
-ratigueya.ataques.push(
+Ratigueya.ataques.push(
     {nombre: "Fuego🔥", id: "boton-fuego"},
     {nombre: "Fuego🔥", id: "boton-fuego"},
     {nombre: "Fuego🔥", id: "boton-fuego"},
@@ -70,9 +79,9 @@ ratigueya.ataques.push(
     {nombre: "Tierra🌱", id: "boton-tierra"},
 )
 
-mokepones.push(hipodoge, capipepo, ratigueya)
+mokepones.push(Hipodoge, Capipepo, Ratigueya)
 /* Aqui termina la seccion para agregar mokepones. */
-function iniciarJuego(){
+function iniciarJuego() {
     sectionSeleccionarAtaque.style.display = "none"
     sectionVerMapa.style.display = "none"
 
@@ -95,7 +104,7 @@ function iniciarJuego(){
     botonReiniciar.addEventListener("click", reiniciarJuego)
 }
 
-function seleccionarMascotaJugador(){
+function seleccionarMascotaJugador() {
     if (inputHipodoge.checked){
         spanMascotaJugador.innerHTML = inputHipodoge.id
         mascotaJugador = inputHipodoge.id
@@ -110,19 +119,18 @@ function seleccionarMascotaJugador(){
     }
 
     if(mascotaJugador){
-    sectionVerMapa.style.display = "flex"
     // sectionSeleccionarAtaque.style.display = "flex"
+    sectionVerMapa.style.display = "flex"
     sectionSeleccionarMascota.style.display = "none"
+    
+    iniciarMapa()
     extraerAtaques(mascotaJugador)
     seleccionarMascotaEnemigo()
-
-    let imagenMokepon = new Image()
-    imagenMokepon.src = hipodoge.foto
-    lienzo.drawImage(imagenMokepon, 20, 40, 100, 100)
+    pintarPersonaje()
     }
 }
 
-function seleccionarMascotaEnemigo(){
+function seleccionarMascotaEnemigo() {
     let mokeponAleatorio = aleatorio(0,mokepones.length -1)
 
     spanMascotaEnemigo.innerHTML = mokepones[mokeponAleatorio].nombre
@@ -130,7 +138,7 @@ function seleccionarMascotaEnemigo(){
     secuenciaAtaque()
 }
 
-function extraerAtaques(mascotaJugador){
+function extraerAtaques(mascotaJugador) {
     for (let i = 0; i < mokepones.length; i++) {
         if (mascotaJugador === mokepones[i].nombre) {
             ataquesDeJugador = mokepones[i].ataques
@@ -139,7 +147,7 @@ function extraerAtaques(mascotaJugador){
     mostrarAtaques(ataquesDeJugador)
 }
 
-function mostrarAtaques(ataques){
+function mostrarAtaques(ataques) {
     ataques.forEach((ataque) => {
         opcionDeAtaques = `
         <button class="boton-ataque" id="${ataque.id}" name="${ataque.nombre}">${ataque.nombre}</button>`
@@ -150,7 +158,7 @@ function mostrarAtaques(ataques){
     botones = document.querySelectorAll(".boton-ataque")
 }
 
-function secuenciaAtaque(){
+function secuenciaAtaque() {
     botones.forEach((boton) => {
         boton.addEventListener("click", (e) => {
             ataqueJugador.push(boton.name)
@@ -162,14 +170,14 @@ function secuenciaAtaque(){
     })
 }
 
-function iniciarPelea(){
+function iniciarPelea() {
     if (ataqueJugador.length === 5){
         ataqueAleatorioEnemigo()
         combate()
     }
 }
 
-function ataqueAleatorioEnemigo(){
+function ataqueAleatorioEnemigo() {
     ataqueRandom = shuffle(ataquesDeEnemigo)
     ataqueRandom.forEach(ataque => {
         ataqueEnemigo.push(ataque.nombre)        
@@ -184,12 +192,12 @@ function shuffle(array) {
     return array;
 }
 
-function indexAmbosOponentes(jugador, enemigo){
+function indexAmbosOponentes(jugador, enemigo) {
     indexAtaqueJugador = ataqueJugador[jugador]
     indexAtaqueEnemigo = ataqueEnemigo[enemigo]
 }
 
-function combate(){
+function combate() {
     for (let index = 0; index < ataqueJugador.length; index++) {
         if (ataqueEnemigo[index] == ataqueJugador[index]){
             indexAmbosOponentes(index, index)
@@ -220,7 +228,7 @@ function combate(){
     }    
 }
 
-function revisarVictorias(){
+function revisarVictorias() {
     if (victoriasJugador > victoriasEnemigo){
         crearMensajeFinal("🎉 Felicidades, Has ganado el duelo! 🎉")
     } else if (victoriasJugador < victoriasEnemigo){
@@ -230,7 +238,7 @@ function revisarVictorias(){
     }
 }
 
-function crearMensaje(resultado){   
+function crearMensaje(resultado) {   
     let nuevoAtaqueJugador = document.createElement("p")
     let nuevoAtaqueEnemigo = document.createElement("p")
 
@@ -242,17 +250,72 @@ function crearMensaje(resultado){
     ataquesEnemigo.appendChild(nuevoAtaqueEnemigo)
 }
 
-function crearMensajeFinal(resultadoFinal){
+function crearMensajeFinal(resultadoFinal) {
     sectionReiniciar.style.display = "block"
     sectionMensajes.innerHTML = resultadoFinal
 }
 
-function reiniciarJuego(){
+function reiniciarJuego() {
     location.reload()
 }
 
-function aleatorio(min,max){
+function aleatorio(min,max) {
     return Math.floor(Math.random()*(max-min+1)+min)
+}
+
+function iniciarMapa() {
+    window.addEventListener("keydown", teclaPresionada)
+    window.addEventListener("keyup", detenerMovimiento)
+    
+    intervalo = setInterval(pintarPersonaje, 50)
+}
+
+function pintarPersonaje() {
+    Hipodoge.x += Hipodoge.velocidadX
+    Hipodoge.y += Hipodoge.velocidadY
+
+    lienzo.clearRect(0, 0, mapa.width, mapa.height)
+    lienzo.drawImage(
+        Hipodoge.mapaFoto,
+        Hipodoge.x,
+        Hipodoge.y,
+        Hipodoge.ancho,
+        Hipodoge.alto)
+}
+
+function moverIzq() {
+    Hipodoge.velocidadX = -5
+}
+function moverDer() {
+    Hipodoge.velocidadX = +5
+}
+function moverUp() {
+    Hipodoge.velocidadY = -5
+}
+function moverDown() {
+    Hipodoge.velocidadY = +5
+}
+function detenerMovimiento() {
+    Hipodoge.velocidadX = 0
+    Hipodoge.velocidadY = 0
+}
+function teclaPresionada(event) {
+    switch (event.key) {
+        case "ArrowLeft":
+            moverIzq()
+            break
+        case "ArrowRight":
+            moverDer()
+            break
+        case "ArrowUp":
+            moverUp()
+            break
+        case "ArrowDown":
+            moverDown()
+            break
+        default:
+            break
+    }
 }
 
 window.addEventListener("load", iniciarJuego)
