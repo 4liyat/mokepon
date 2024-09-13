@@ -8,9 +8,8 @@
 </head>
 <body>
     <section id="seleccionar-mascota">
-        <h1 class="titulo">Mokepones!<br>🔥💦🌱</h1>
-        
-        <h2 class="subtitulo">Selecciona una mascota: </h2>
+        <h1>Mokepones!<br>🔥💦🌱</h1>
+        <h2>Selecciona una mascota: </h2>
         <!-- 
         Hipodoge -> Agua
         Capipepo -> Tierra
@@ -27,23 +26,29 @@
     </section>
 
     <section id="ver-mapa">
-        <h1 class="titulo">Recorre el mapa con tu Mokepon!</h1>
+        <h1>Recorre el mapa con tu Mokepon!</h1>
         <canvas id="mapa"></canvas>
         <h4>Selecciona tu movimiento</h4>
         <div id="selector-movimiento">
-            <button onmouseup="detenerMovimiento()" onmousedown="moverIzq()">⬅</button>
-            <button onmouseup="detenerMovimiento()" onmousedown="moverDer()">➡</button>
-            <button onmouseup="detenerMovimiento()" onmousedown="moverUp()">⬆</button>
-            <button onmouseup="detenerMovimiento()" onmousedown="moverDown()">⬇</button>
+            <button class="boton-movimiento" onmouseup="detenerMovimiento()" onmousedown="moverIzq()">⬅</button>
+            <button class="boton-movimiento" onmouseup="detenerMovimiento()" onmousedown="moverDer()">➡</button>
+            <button class="boton-movimiento" onmouseup="detenerMovimiento()" onmousedown="moverUp()">⬆</button>
+            <button class="boton-movimiento" onmouseup="detenerMovimiento()" onmousedown="moverDown()">⬇</button>
         </div>
         
     </section>
 
     <section id="seleccionar-ataque">
-        <h1 class="titulo">Mokepones!<br>🔥💦🌱</h1>
-
-        <h2 class="subtitulo">Selecciona tu ataque: </h2>
-        <!-- 💦>🔥>🌱 -->
+        <h1>Mokepones!<br>🔥💦🌱</h1>
+        <h2>Selecciona tus ataques: </h2>
+        <h3>Tienes 5 ataques, ordenalos para la secuencia de combate</h3>
+        <h4>
+            recuerda que <br>
+            Agua🌊 le gana a Fuego🔥 <br>
+            Tierra🌱 le gana a Agua🌊 <br>
+            Fuego🔥 le gana a Tierra🌱
+        </h4>
+        
         <div id="botones-ataque">
             <!-- ataques de mokepon -->
         </div>

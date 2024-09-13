@@ -11,16 +11,22 @@ body {
     align-items: center;
     justify-content: center;
 }
-.titulo {
+h1 {
     color: #F5EDED;
     font-size: 40px;
     text-align: center;
-    margin: 5px;
+    margin: 10px;
 }
-.subtitulo {
+h2, h3, h4 {
     color: #F5EDED;
     font-size: 24px;
-    margin: 5px;
+    margin: 10px;
+}
+h3, h4 {
+    text-align: center;
+    color: #F5EDED;
+    font-size: 20px;
+    margin: 10px;
 }
 .tarjetas {
     display: flex;
@@ -142,6 +148,16 @@ input:checked + label {
 }
 #selector-movimiento {
     display: flex;
+}
+.boton-movimiento {
+    background: #F5EDED;
+    box-sizing: border-box;
+    border-radius: 16px;
+    border-color: transparent;
+    margin: 4px 10px;
+    width: 60px;
+    height: 36px;
+    font-size: 16px;
 }
 
 @media (max-width: 360px){

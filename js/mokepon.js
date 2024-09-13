@@ -136,7 +136,6 @@ function seleccionarMascotaJugador() {
     }
 
     if(mascotaJugador){
-    // sectionSeleccionarAtaque.style.display = "flex"
     sectionVerMapa.style.display = "flex"
     sectionSeleccionarMascota.style.display = "none"
     
@@ -305,6 +304,15 @@ function pintarCanvas() {
     hipodogeEnemigo.pintarMokepon()
     capipepoEnemigo.pintarMokepon()
     ratigueyaEnemigo.pintarMokepon()
+
+    if (
+        mascotaJugadorObjeto.velocidadX !== 0 ||
+        mascotaJugadorObjeto.velocidadY !== 0
+    ) {
+        revisarColision(hipodogeEnemigo)
+        revisarColision(capipepoEnemigo)
+        revisarColision(ratigueyaEnemigo)
+    }
 }
 
 function moverIzq() {
@@ -351,17 +359,28 @@ function objetoMascota() {
 }
 
 function revisarColision(enemigo) {
-    
+    const arribaEnemigo = enemigo.y
+    const abajoEnemigo = enemigo.y + enemigo.alto
+    const izquierdaEnemigo = enemigo.x
+    const derechaEnemigo = enemigo.x + enemigo.ancho
+
+    const arribaMascota = mascotaJugadorObjeto.y
+    const abajoMascota = mascotaJugadorObjeto.y + mascotaJugadorObjeto.alto
+    const izquierdaMascota = mascotaJugadorObjeto.x
+    const derechaMascota = mascotaJugadorObjeto.x + mascotaJugadorObjeto.ancho
     
     if (
         abajoMascota < arribaEnemigo ||
-        arribaMascota < abajoEnemigo ||
+        arribaMascota > abajoEnemigo ||
         derechaMascota < izquierdaEnemigo ||
-        izquierdaMascota < derechaEnemigo
+        izquierdaMascota > derechaEnemigo
     ) {
         return
     }
-    
+
+    alert("Empieza el combate con " + enemigo.nombre)
+    detenerMovimiento()
+    sectionSeleccionarAtaque.style.display = "flex"
 }
 
 window.addEventListener("load", iniciarJuego)
