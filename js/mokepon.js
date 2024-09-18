@@ -95,6 +95,28 @@ ratigueya.ataques.push(
     {nombre: "Agua🌊", id: "boton-agua"},
     {nombre: "Tierra🌱", id: "boton-tierra"},
 )
+//Ataques de los enemigos
+hipodogeEnemigo.ataques.push(
+    {nombre: "Agua🌊", id: "boton-agua"},
+    {nombre: "Agua🌊", id: "boton-agua"},
+    {nombre: "Agua🌊", id: "boton-agua"},
+    {nombre: "Tierra🌱", id: "boton-tierra"},
+    {nombre: "Fuego🔥", id: "boton-fuego"},
+)
+capipepoEnemigo.ataques.push(
+    {nombre: "Tierra🌱", id: "boton-tierra"},
+    {nombre: "Tierra🌱", id: "boton-tierra"},
+    {nombre: "Tierra🌱", id: "boton-tierra"},
+    {nombre: "Agua🌊", id: "boton-agua"},
+    {nombre: "Fuego🔥", id: "boton-fuego"},
+)
+ratigueyaEnemigo.ataques.push(
+    {nombre: "Fuego🔥", id: "boton-fuego"},
+    {nombre: "Fuego🔥", id: "boton-fuego"},
+    {nombre: "Fuego🔥", id: "boton-fuego"},
+    {nombre: "Agua🌊", id: "boton-agua"},
+    {nombre: "Tierra🌱", id: "boton-tierra"},
+)
 
 mokepones.push(hipodoge, capipepo, ratigueya)
 /* Aqui termina la seccion para agregar mokepones. */
@@ -141,16 +163,17 @@ function seleccionarMascotaJugador() {
     
     iniciarMapa()
     extraerAtaques(mascotaJugador)
-    seleccionarMascotaEnemigo()
     pintarCanvas()
     }
 }
 
-function seleccionarMascotaEnemigo() {
-    let mokeponAleatorio = aleatorio(0,mokepones.length -1)
-
+function seleccionarMascotaEnemigo(enemigo) {
+    /*let mokeponAleatorio = aleatorio(0,mokepones.length -1)
     spanMascotaEnemigo.innerHTML = mokepones[mokeponAleatorio].nombre
     ataquesDeEnemigo = mokepones[mokeponAleatorio].ataques
+    secuenciaAtaque() */
+    spanMascotaEnemigo.innerHTML = enemigo.nombre
+    ataquesDeEnemigo = enemigo.ataques
     secuenciaAtaque()
 }
 
@@ -379,8 +402,10 @@ function revisarColision(enemigo) {
     }
 
     alert("Empieza el combate con " + enemigo.nombre)
+    seleccionarMascotaEnemigo(enemigo)
     detenerMovimiento()
     sectionSeleccionarAtaque.style.display = "flex"
+    sectionVerMapa.style.display = "none"
 }
 
 window.addEventListener("load", iniciarJuego)
