@@ -143,9 +143,6 @@ input:checked + label {
     align-items: center;
     justify-content: center;
 }
-#mapa {
-    border: 2px solid white;
-}
 #selector-movimiento {
     display: flex;
 }
