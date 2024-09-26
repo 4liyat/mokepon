@@ -26,14 +26,20 @@
     </section>
 
     <section id="ver-mapa">
-        <h1>Recorre el mapa con tu Mokepon!</h1>
+        <h2>Recorre el mapa con tu Mokepon!</h2>
         <canvas id="mapa"></canvas>
         <h4>Selecciona tu movimiento</h4>
         <div id="selector-movimiento">
-            <button class="boton-movimiento" onmouseup="detenerMovimiento()" onmousedown="moverIzq()">⬅</button>
-            <button class="boton-movimiento" onmouseup="detenerMovimiento()" onmousedown="moverDer()">➡</button>
-            <button class="boton-movimiento" onmouseup="detenerMovimiento()" onmousedown="moverUp()">⬆</button>
-            <button class="boton-movimiento" onmouseup="detenerMovimiento()" onmousedown="moverDown()">⬇</button>
+            <div>
+                <button class="boton-movimiento" onmouseup="detenerMovimiento()" onmousedown="moverUp()">⬆</button>
+            </div>
+            <div>
+                <button class="boton-movimiento" onmouseup="detenerMovimiento()" onmousedown="moverIzq()">⬅</button>
+                <button class="boton-movimiento" onmouseup="detenerMovimiento()" onmousedown="moverDer()">➡</button>
+            </div>
+            <div>
+                <button class="boton-movimiento" onmouseup="detenerMovimiento()" onmousedown="moverDown()">⬇</button>
+            </div>
         </div>
         
     </section>
