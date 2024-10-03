@@ -15,6 +15,7 @@ const contenedorAtaques = document.getElementById("botones-ataque")
 const sectionVerMapa = document.getElementById("ver-mapa")
 const mapa = document.getElementById("mapa")
 
+let jugadorId = null
 let opcionDeMokepones
 let opcionDeAtaques
 let mokepones = []
@@ -155,6 +156,21 @@ function iniciarJuego() {
 
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador)
     botonReiniciar.addEventListener("click", reiniciarJuego)
+
+    unirseAlJuego()
+}
+
+function unirseAlJuego() {
+    fetch("http://localhost:8080/unirse")
+    .then(function (res) {
+        if (res.ok) {
+            res.text()
+                .then(function (respuesta) {
+                    console.log(respuesta)
+                    jugadorId = respuesta
+                })
+        }
+    })
 }
 
 function seleccionarMascotaJugador() {
@@ -179,13 +195,22 @@ function seleccionarMascotaJugador() {
     extraerAtaques(mascotaJugador)
     pintarCanvas()
     }
+    seleccionarMokepon(mascotaJugador)
+}
+
+function seleccionarMokepon(mascotaJugador) {
+    fetch(`http://localhost:8080/mokepon/${jugadorId}`, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            mokepon: mascotaJugador
+        })
+    })
 }
 
 function seleccionarMascotaEnemigo(enemigo) {
-    /*let mokeponAleatorio = aleatorio(0,mokepones.length -1)
-    spanMascotaEnemigo.innerHTML = mokepones[mokeponAleatorio].nombre
-    ataquesDeEnemigo = mokepones[mokeponAleatorio].ataques
-    secuenciaAtaque() */
     spanMascotaEnemigo.innerHTML = enemigo.nombre
     ataquesDeEnemigo = enemigo.ataques
     secuenciaAtaque()
