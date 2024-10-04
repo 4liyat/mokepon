@@ -388,6 +388,16 @@ function enviarPosicion(x,y) {
             y
         })
     })
+    .then(function (res) {
+        if (res.ok) {
+            res.json()
+            .then(function (respuesta) {
+                respuesta.enemigos({enemigos}) {
+                    console.log(enemigos)
+                }
+            })
+        }
+    })
 }
 
 function moverIzq() {
