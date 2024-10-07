@@ -31,14 +31,14 @@
         <h4>Selecciona tu movimiento</h4>
         <div id="selector-movimiento">
             <div>
-                <button class="boton-movimiento" onmouseup="detenerMovimiento()" onmousedown="moverUp()">⬆</button>
+                <button class="boton-movimiento" ontouchend="detenerMovimiento()" onmouseup="detenerMovimiento()" ontouchstart="moverUp()" onmousedown="moverUp()">⬆</button>
             </div>
             <div>
-                <button class="boton-movimiento" onmouseup="detenerMovimiento()" onmousedown="moverIzq()">⬅</button>
-                <button class="boton-movimiento" onmouseup="detenerMovimiento()" onmousedown="moverDer()">➡</button>
+                <button class="boton-movimiento" ontouchend="detenerMovimiento()" onmouseup="detenerMovimiento()" ontouchstart="moverIzq()" onmousedown="moverIzq()">⬅</button>
+                <button class="boton-movimiento" ontouchend="detenerMovimiento()" onmouseup="detenerMovimiento()" ontouchstart="moverDer()" onmousedown="moverDer()">➡</button>
             </div>
             <div>
-                <button class="boton-movimiento" onmouseup="detenerMovimiento()" onmousedown="moverDown()">⬇</button>
+                <button class="boton-movimiento" ontouchend="detenerMovimiento()" onmouseup="detenerMovimiento()" ontouchstart="moverDown()" onmousedown="moverDown()">⬇</button>
             </div>
         </div>
         
@@ -83,6 +83,6 @@
             </div>
         </div>
     </section>
-    <script src="./js/mokepon.js"></script>
+    <script src="./mokepon.js"></script>
 </body>
 </html>
